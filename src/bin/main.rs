@@ -1,7 +1,3 @@
-/// Rust WebServer
-///
-/// runs on 127.0.0.1:8585
-
 extern crate hello;
 use hello::ThreadPool;
 
@@ -17,6 +13,7 @@ enum ServerMessage {
 }
 
 fn handle_client(mut stream: TcpStream, sender: mpsc::Sender<ServerMessage>) {
+    let asset_dir = "public/";
     let mut buf = [0; 512];
     let mut contents = String::new();
 
@@ -40,7 +37,7 @@ fn handle_client(mut stream: TcpStream, sender: mpsc::Sender<ServerMessage>) {
         ("404 NOT FOUND", "404.html")
     };
 
-    if let Ok(mut file) = File::open(file_name) {
+    if let Ok(mut file) = File::open(format!("{}{}", asset_dir, file_name)) {
         if let Err(_) = file.read_to_string(&mut contents) {
             println!("Failed to read file");
         }

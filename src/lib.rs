@@ -93,6 +93,5 @@ impl Drop for ThreadPool {
                 }
             }
         }
-    }git remote add origin https://github.com/bill-bishop/rust-webserver.git
-    git push -u origin master
+    }
 }
