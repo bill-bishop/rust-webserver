@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shutdown</title>
+</head>
+<body>
+<p>Shutdown successful.</p>
+<script>
+    // shutdown is triggered on next request after shutdown signal
+    try { fetch('/'); } catch (e) {}
+</script>
+</body>
+</html>
