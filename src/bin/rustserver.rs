@@ -1,5 +1,5 @@
-extern crate hello;
-use hello::ThreadPool;
+extern crate rustserver;
+use rustserver::ThreadPool;
 
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
@@ -54,7 +54,7 @@ fn handle_client(mut stream: TcpStream, sender: mpsc::Sender<ServerMessage>) {
 }
 
 fn main() {
-    let address = "127.0.0.1:8585";
+    let address = "0.0.0.0:8585";
     let pool = ThreadPool::new(8);
     let (sender, receiver) = mpsc::channel();
 
